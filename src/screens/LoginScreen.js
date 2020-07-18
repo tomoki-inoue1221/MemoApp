@@ -4,8 +4,8 @@ import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-nat
 
 class LoginScreen extends React.Component {
   state = {
-    email: '',
-    password: '',
+    email: 'ttt@ttt.com',
+    password: '123456',
   }
 
   handleSubmit() {
@@ -14,7 +14,7 @@ class LoginScreen extends React.Component {
       this.state.password,
     ).then((user) => {
       console.log(user);
-      this.props.navigation.navigate('Home', { currentUser: user });
+      this.props.navigation.navigate('Home');
     }).catch((error) => {
       console.log(error);
     });

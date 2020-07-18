@@ -11,14 +11,14 @@ class MemoCreateScreen extends React.Component {
 
   // eslint-disable-next-line
   handlePress() {
-    const { params } = this.props.navigation.state;
     console.log('press');
     const db = firebase.firestore();
-    db.collection(`users/${params.currentUser.user.uid}/memos`).add({
+    const { currentUser } = firebase.auth();
+    db.collection(`users/${currentUser.uid}/memos`).add({
       body: this.state.body,
       createdOn: new Date(),
     }).then(() => {
-      console.log(params.currentUser.user.uid);
+      console.log(currentUser.uid);
       console.log('success');
     }).catch((error) => {
       console.log(error);
