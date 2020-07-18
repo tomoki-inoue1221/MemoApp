@@ -14,7 +14,7 @@ class LoginScreen extends React.Component {
       this.state.password,
     ).then((user) => {
       console.log(user);
-      this.props.navigation.navigate('Home');
+      this.props.navigation.navigate('Home', { currentUser: user });
     }).catch((error) => {
       console.log(error);
     });
@@ -43,6 +43,9 @@ class LoginScreen extends React.Component {
         />
         <TouchableHighlight underlayColor="#C70F66" style={styles.button} onPress={this.handleSubmit.bind(this)}>
           <Text style={styles.buttonTitle}>ログインする</Text>
+        </TouchableHighlight>
+        <TouchableHighlight underlayColor="#C70F66" style={styles.button} onPress={() => { this.props.navigation.navigate('SignUp'); }}>
+          <Text style={styles.buttonTitle}>新規登録へ</Text>
         </TouchableHighlight>
       </View>
     );
@@ -77,6 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E31676',
     width: '40%',
     alignSelf: 'center',
+    margin: 8,
   },
   buttonTitle: {
     fontSize: 18,
