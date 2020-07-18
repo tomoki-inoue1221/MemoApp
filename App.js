@@ -25,18 +25,18 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const App = createStackNavigator({
-  Login: { screen: LoginScreen },
+  // Login: { screen: LoginScreen },
   SignUp: { screen: SignUpScreen },
   Home: { screen: MemoListScreen },
   MemoDetail: { screen: MemoDetailScreen },
   MemoEdit: { screen: MemoEditScreen },
 }, {
   defaultNavigationOptions: {
-    headerTitle: 'MEMOT',
+    headerTitle: '新規登録',
     headerTintColor: '#FFF',
     headerBackTitle: null,
     headerStyle: {
-      backgroundColor: '#265366',
+      backgroundColor: '#000',
     },
   },
 });
