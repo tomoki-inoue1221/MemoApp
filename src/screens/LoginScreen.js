@@ -5,8 +5,8 @@ import { StackActions, NavigationActions } from 'react-navigation';
 
 class LoginScreen extends React.Component {
   state = {
-    email: 'ttt@ttt.com',
-    password: '123456',
+    email: '',
+    password: '',
   }
 
   handleSubmit() {
@@ -21,8 +21,7 @@ class LoginScreen extends React.Component {
         ],
       });
       this.props.navigation.dispatch(resetAction);
-    }).catch((error) => {
-      console.log(error);
+    }).catch(() => {
     });
   }
 

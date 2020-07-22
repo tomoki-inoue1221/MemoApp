@@ -9,20 +9,15 @@ class MemoCreateScreen extends React.Component {
     body: '',
   }
 
-  // eslint-disable-next-line
   handlePress() {
-    console.log('press');
     const db = firebase.firestore();
     const { currentUser } = firebase.auth();
     db.collection(`users/${currentUser.uid}/memos`).add({
       body: this.state.body,
       createdOn: new Date(),
     }).then(() => {
-      console.log(currentUser.uid);
-      console.log('success');
       this.props.navigation.goBack();
-    }).catch((error) => {
-      console.log(error);
+    }).catch(() => {
     });
   }
 
@@ -36,6 +31,7 @@ class MemoCreateScreen extends React.Component {
           onChangeText={(text) => { this.setState({ body: text }); }}
           autoCapitalize="none"
           autoCorrect={false}
+          textAlignVertical="top"
         />
         <CircleButton onPress={this.handlePress.bind(this)} name="check" />
       </View>
