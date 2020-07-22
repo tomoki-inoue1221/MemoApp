@@ -25,7 +25,6 @@ class MemoEditScreen extends React.Component {
     })
       .then(() => {
         const { navigation } = this.props;
-        console.log(navigation);
         navigation.state.params.returnMemo({
           body: this.state.body,
           key: this.state.key,

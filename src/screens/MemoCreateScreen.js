@@ -20,6 +20,7 @@ class MemoCreateScreen extends React.Component {
     }).then(() => {
       console.log(currentUser.uid);
       console.log('success');
+      this.props.navigation.goBack();
     }).catch((error) => {
       console.log(error);
     });
