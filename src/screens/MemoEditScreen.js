@@ -18,11 +18,20 @@ class MemoEditScreen extends React.Component {
   handlePress() {
     const db = firebase.firestore();
     const { currentUser } = firebase.auth();
+    const newDate = firebase.firestore.Timestamp.now();
     db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key).update({
       body: this.state.body,
+      createdOn: newDate,
     })
       .then(() => {
-        this.props.navigation.goBack();
+        const { navigation } = this.props;
+        console.log(navigation);
+        navigation.state.params.returnMemo({
+          body: this.state.body,
+          key: this.state.key,
+          createdOn: newDate,
+        });
+        navigation.goBack();
       })
       .catch((error) => {
         console.log(error);
